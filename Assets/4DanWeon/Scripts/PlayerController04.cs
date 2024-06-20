@@ -32,7 +32,15 @@ public class PlayerController04 : MonoBehaviour
         {
             hasPowerup = true;
             Destroy(other.gameObject);
+            StartCoroutine(PowerUpCountdownRoutine());  //파워업해제 코루틴 함수 실행
         }
+    }
+
+    IEnumerator PowerUpCountdownRoutine()   //파워업해제 코루틴 함수
+    {
+        //7초를 기다린 후 powerup 상태를 해제
+        yield return new WaitForSeconds(7);
+        hasPowerup = false;
     }
 
     private void OnCollisionEnter(Collision collision)
