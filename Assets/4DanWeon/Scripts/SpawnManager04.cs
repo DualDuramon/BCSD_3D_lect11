@@ -9,10 +9,17 @@ public class SpawnManager04 : MonoBehaviour
 
     void Start()
     {
-        //랜덤한 위치에 적 오브젝트 생성
-        Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+        SpawnEnemyWave(3);
     }
 
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for (int i = 0; i < enemiesToSpawn; i++)
+        {
+            //랜덤한 위치에 적 오브젝트 생성
+            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+        }
+    }
 
     // Update is called once per frame
     void Update()
