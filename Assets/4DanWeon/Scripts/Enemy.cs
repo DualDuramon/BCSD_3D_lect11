@@ -22,5 +22,10 @@ public class Enemy : MonoBehaviour
         Vector3 lookDirection
             = (player.transform.position - transform.position).normalized; //플레이어를 향하는 정규화된 벡터
         enemyRb.AddForce(lookDirection * speed);
+
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }

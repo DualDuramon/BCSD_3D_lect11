@@ -5,11 +5,15 @@ using UnityEngine;
 public class SpawnManager04 : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    private float spawnRange = 9;
+    public GameObject powerUpObject;
+    private float spawnRange = 9.0f;
+    public int enemyCount;
+    public int waveNumber = 1;
 
     void Start()
     {
-        SpawnEnemyWave(3);
+        SpawnEnemyWave(waveNumber);
+        Instantiate(powerUpObject, GenerateSpawnPosition(), powerUpObject.transform.rotation);
     }
 
     void SpawnEnemyWave(int enemiesToSpawn)
@@ -24,7 +28,14 @@ public class SpawnManager04 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enemyCount = FindObjectsOfType<Enemy>().Length; //적의 수를 가져옴
 
+        if (enemyCount == 0)
+        {
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
+            Instantiate(powerUpObject, GenerateSpawnPosition(), powerUpObject.transform.rotation);
+        }
     }
 
     Vector3 GenerateSpawnPosition() //랜덤 위치 생성 함수
