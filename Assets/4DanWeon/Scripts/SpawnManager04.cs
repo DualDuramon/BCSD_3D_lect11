@@ -13,6 +13,13 @@ public class SpawnManager04 : MonoBehaviour
         Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
     }
 
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
     Vector3 GenerateSpawnPosition() //랜덤 위치 생성 함수
     {
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
@@ -22,9 +29,6 @@ public class SpawnManager04 : MonoBehaviour
         return spawnPos;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
 }
